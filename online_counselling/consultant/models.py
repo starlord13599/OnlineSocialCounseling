@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_countries.fields import CountryField
+from django.core.exceptions import ValidationError
 # Create your models here.
 
 def phone_validator(value):
@@ -7,17 +9,17 @@ def phone_validator(value):
 		pass
 	else:
 		raise ValidationError('Phone Number sholud be of 10 digits')
+	if value.isdigit():
+		pass
+	else:
+		raise ValidationError('Phone Number sholud numbers only')
 
 
 class Consultant(models.Model):
 	"""Model for Consultant"""
 	user = models.OneToOneField(User,on_delete=models.CASCADE)
-	first_name = models.CharField(max_length=80)
-	last_name = models.CharField(max_length=80)
 	phone_no = models.CharField(max_length=10,validators=[phone_validator])
-	email_id = models.EmailField()
-	state = models.CharField(max_length=100)
-	country = models.CharField(max_length=100)
+	country = CountryField()
 	ratings = models.FloatField()
 	number_of_reviews = models.IntegerField()
 	number_of_customers = models.IntegerField()

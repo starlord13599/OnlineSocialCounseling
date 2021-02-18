@@ -1,0 +1,24 @@
+nav{
+	z-index: 2;
+}
+
+.bg-light{
+	background-color: transparent !important;
+}
+
+#landing-image{
+
+	width: 100%;
+	position: absolute;
+	top: -170px;
+}
+
+.navbar-light{
+	color: black;
+	font-weight: 600;
+}
+
+.errorlist{
+	color: red;
+	list-style: none;
+}

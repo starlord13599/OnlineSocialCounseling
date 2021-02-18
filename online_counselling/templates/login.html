@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container" style="width: 300px; margin-top: 200px; ">
+	<form method="POST">
+	  {% csrf_token %}
+	  <div class="mb-3">
+	    <label for="exampleInputEmail1" class="form-label">User Name:</label>
+	    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username" name="username">
+	  </div>
+	  <div class="mb-3">
+	    <label for="exampleInputPassword1" class="form-label">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password" name="password">
+	  </div>
+	  <a href="/register" style="margin-bottom: 15px; display: inline-block;">New to Online Counselling?</a><br>
+	  <button type="submit" class="btn btn-primary">Login</button>
+	</form>
+</div>
+
+{% endblock %}

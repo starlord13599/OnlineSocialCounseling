@@ -22,3 +22,8 @@ nav{
 	color: red;
 	list-style: none;
 }
+
+.dropdown-menu[data-bs-popper]{
+	right: 0 !important;
+	left: unset;
+}

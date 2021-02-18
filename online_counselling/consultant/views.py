@@ -14,7 +14,7 @@ def register_consultant(request):
 		context = {}
 		context['user_form'] = user_form
 		context['consultant_form'] = consultant_form
-		return render(request,'registeration-form.html',context)
+		return render(request,'consultant/registeration-form.html',context)
 	else:
 		user_form = UserForm(request.POST)
 		consultant_form = ConsultantForm(request.POST)
@@ -34,5 +34,5 @@ def register_consultant(request):
 			consultant.save()
 			return redirect('index')
 		else:
-			return render(request,'registeration-form.html',context)
+			return render(request,'consultant/registeration-form.html',context)
 	  

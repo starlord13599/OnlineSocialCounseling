@@ -31,12 +31,12 @@
 
       {% if user.is_authenticated %}
       	<div class="dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color: white; font-size: 1.1rem;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color: black; font-size: 1.1rem;">
             {{ user.username|title }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             
-            <li><a class="dropdown-item" href="{% url 'profile' '{{ user.id }}' %}">Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'profile' user.id %}">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a href="/logout-user" class="dropdown-item" style="">Logout</a></li>
             

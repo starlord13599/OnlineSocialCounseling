@@ -9,8 +9,7 @@ nav{
 #landing-image{
 
 	width: 100%;
-	position: absolute;
-	top: -170px;
+	margin-top: -270px;
 }
 
 .navbar-light{
@@ -26,4 +25,24 @@ nav{
 .dropdown-menu[data-bs-popper]{
 	right: 0 !important;
 	left: unset;
+}
+
+.category-images{
+	width: 90%;
+
+}
+
+.category-description{
+	background-color: #f2f2f2;
+	border-radius: 15px;
+	padding: 125px 0 0 70px;
+	line-height: 65px;
+}
+
+.content{
+	margin-top: 25px;
+}
+
+#categories{
+	padding: 0 135px;
 }

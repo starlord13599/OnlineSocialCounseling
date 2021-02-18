@@ -1,5 +1,49 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<div>
 <img src="{% static '/images/landing_page.svg' %}" id="landing-image">
+</div>
+<h1 style="margin-left: 130px;margin-bottom: 50px;display: inline-block;border-bottom: 4px solid #fe9187;">Where we can help?</h1>
+<div id="categories">
+	<div class="row content">
+		<div class="col-6">
+			<img src="{% static '/images/doctor.jpg' %}" class="category-images">
+		</div>
+		<div class="col-6 category-description">
+			<h1>Looking for Doctor?</h1>
+			<button class="btn btn-lg btn-outline-success">Click Here</button>
+		</div>
+	</div>
+	<div class="row content">
+		<div class="col-6 category-description">
+			<h1>Career Planning?</h1>
+			<button class="btn btn-lg btn-outline-success">Click Here</button>
+		</div>
+		<div class="col-6">
+			<img src="{% static '/images/career.jpg' %}" class="category-images">
+		</div>
+	</div>
+	<div class="row content">
+		<div class="col-6">
+			<img src="{% static '/images/lawyer.jpg' %}" class="category-images">
+		</div>
+		<div class="col-6 category-description">
+			<h1>Finding a Lawyer?</h1>
+			<button class="btn btn-lg btn-outline-success">Click Here</button>
+		</div>
+	</div>
+	<div class="row content">
+		<div class="col-6 category-description">
+			<h1>Some Educational?</h1>
+			<button class="btn btn-lg btn-outline-success">Click Here</button>
+		</div>
+		<div class="col-6">
+			<img src="{% static '/images/educational.jpg' %}" class="category-images">
+		</div>
+	</div>
+</div>
+
+
+
 {% endblock %}

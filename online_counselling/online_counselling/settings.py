@@ -80,19 +80,12 @@ WSGI_APPLICATION = 'online_counselling.wsgi.application'
 
 DATABASES = {
     'default': {
-
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
         'NAME': 'online_counselling',
-
         'USER': 'postgres',
-
         'PASSWORD': 'root',
-
         'HOST': 'localhost',
-
         'PORT': '5432',
-
     }
 
 }

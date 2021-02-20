@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -33,5 +33,12 @@ def login_user(request):
 		return redirect('login')
 
 
+@login_required
 def view_profile(request,id):
 	return HttpResponse('Hello')
+
+
+@login_required
+def logout_user(request):
+	logout(request)
+	return redirect('/')

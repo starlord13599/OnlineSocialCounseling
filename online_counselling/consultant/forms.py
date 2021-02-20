@@ -1,5 +1,5 @@
 from django import forms
-from .models import Consultant
+from .models import Consultant, ConsutancyType
 from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
@@ -10,7 +10,7 @@ class UserForm(forms.ModelForm):
 
 
 class DateInput(forms.DateInput):
-    input_type = 'date'
+	input_type = 'date'
 
 class ConsultantForm(forms.ModelForm):
 	class Meta:
@@ -19,3 +19,10 @@ class ConsultantForm(forms.ModelForm):
 		widgets = {
             'date_of_birth': DateInput()
         }
+	def __init__(self, *args, **kwargs):
+		super(ConsultantForm, self).__init__(*args, **kwargs)
+		obj = ConsutancyType.objects.all()
+		consultancy_types = []
+		for i in obj:
+			consultancy_types.append((i.category_type,i.category_type))
+		self.fields["type_of_consultant"].widget = forms.Select(choices=consultancy_types)

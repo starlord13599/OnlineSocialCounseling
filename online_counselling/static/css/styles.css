@@ -46,3 +46,9 @@ nav{
 #categories{
 	padding: 0 135px;
 }
+
+.messages{
+	list-style: none;
+    color: red;
+    font-weight: 600;
+}

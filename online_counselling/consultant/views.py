@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .forms import UserForm, ConsultantForm
 from django.contrib import messages
+from .models import ConsutancyType
 
 
 # Create your views here.

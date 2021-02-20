@@ -42,3 +42,4 @@ class ConsutancyType(models.Model):
 class Portfolio(models.Model):
 	consultant = models.ForeignKey(Consultant,on_delete=models.CASCADE)
 	links = models.CharField(max_length=150)
+	

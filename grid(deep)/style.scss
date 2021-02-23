@@ -1,0 +1,54 @@
+body {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-family: 'Lato', sans-serif;
+}
+
+.image {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: .5rem;
+    margin: .5rem;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.block_container {
+
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f5f6f7;
+
+    &__indi {
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        border-radius: .5rem;
+        align-items: center;
+        padding: 1rem;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+        // &--img {}
+
+        &--name {
+            margin: .3rem;
+        }
+
+        &--place {
+            margin: .3rem;
+        }
+    }
+}

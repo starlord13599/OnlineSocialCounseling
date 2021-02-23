@@ -20,9 +20,17 @@ class Appointment(models.Model):
 
 
 class Feedback(models.Model):
-	consultant = models.ForeignKey(Consultant,on_delete=models.CASCADE)
-	consultee = models.ForeignKey(Consultee,on_delete=models.CASCADE)
+	consultant = models.ForeignKey(Consultant, on_delete=models.CASCADE)
+	consultee = models.ForeignKey(Consultee, on_delete=models.CASCADE)
 	remark = models.CharField(max_length=250)
 
 	class Meta:
 		db_table = 'feedback'
+
+
+class Country(models.Model):
+	country_name = models.CharField(max_length=150, unique=True)
+	country_description = models.CharField(max_length=250, blank=True)
+
+	class Meta:
+		db_table = 'countries_list'

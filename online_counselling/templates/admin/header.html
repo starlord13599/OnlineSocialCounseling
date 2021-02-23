@@ -1,0 +1,42 @@
+<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-between">
+        <a class="navbar-brand brand-logo" href="/"><img src="../../static/adminResourses/images/logo.svg"
+                                                                  alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="/"><img
+                src="../../static/adminResourses/images/logo-mini.svg" alt="logo"/></a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
+        <div class="d-none d-lg-flex">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                <span class="mdi mdi-menu"></span>
+            </button>
+        </div>
+        <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-profile dropdown">
+                <div class="nav-link" data-toggle="dropdown" id="profileDropdown">
+                    <span class="user-icon">E</span>
+                </div>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown user-profile-action"
+                     aria-labelledby="profileDropdown">
+                    <div class="p-2">
+                        <a class="dropdown-item py-1 px-2 d-flex align-items-center justify-content-between" href="#">
+                            <span>Profile</span>
+                            <span class="p-0">
+                    <i class="mdi mdi-account-outline ml-1"></i>
+                  </span>
+                        </a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item py-1  px-2 d-flex align-items-center justify-content-between" href="/admin/logout">
+                            <span>Log Out</span>
+                            <i class="mdi mdi-logout ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+        </button>
+    </div>
+</nav>

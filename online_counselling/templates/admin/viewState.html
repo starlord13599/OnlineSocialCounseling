@@ -54,15 +54,17 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>2012/08/03</td>
-                                            <td>
-                                                <a href=""><i class="mdi mdi-pencil-box" style="font-size: 20px;color: #0e4cfd;margin-left: 10px;"></i> </a>
-                                                <a href=""><i class="mdi mdi-delete" style="font-size: 20px;color: red;margin-left: 10px;"></i> </a>
-                                            </td>
-                                        </tr>
+                                        {% for state in states %}
+                                            <tr>
+                                                <td>{{ state.country.country_name }}</td>
+                                                <td>{{ state.state_name }}</td>
+                                                <td>{{ state.state_description }}</td>
+                                                <td>
+                                                    <a href="{% url 'edit_state' state.id %}"><i class="mdi mdi-pencil-box" style="font-size: 20px;color: #0e4cfd;margin-left: 10px;"></i> </a>
+                                                    <a href="{% url 'delete_state' state.id %}"><i class="mdi mdi-delete" style="font-size: 20px;color: red;margin-left: 10px;"></i> </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
 
                                         </tbody>
                                     </table>

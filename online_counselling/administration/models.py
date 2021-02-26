@@ -34,3 +34,22 @@ class Country(models.Model):
 
 	class Meta:
 		db_table = 'countries_list'
+
+
+class State(models.Model):
+	country = models.ForeignKey(Country, on_delete=models.CASCADE)
+	state_name = models.CharField(max_length=150, unique=True)
+	state_description = models.CharField(max_length=250, blank=True)
+
+	class Meta:
+		db_table = 'states_list'
+
+
+class City(models.Model):
+	country = models.ForeignKey(Country, on_delete=models.CASCADE)
+	state = models.ForeignKey(State, on_delete=models.CASCADE)
+	city_name = models.CharField(max_length=150, unique=True)
+	city_description = models.CharField(max_length=250, blank=True)
+
+	class Meta:
+		db_table = 'cities_list'

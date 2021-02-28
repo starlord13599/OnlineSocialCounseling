@@ -5,8 +5,8 @@ from .models import ConsutancyType
 
 
 # Create your views here.
-def demo(request):
-	return HttpResponse('In Consultant')
+def index(request):
+	return render(request,'consultant/index.html')
 
 def register_consultant(request):
 	if request.method == 'GET':
@@ -37,3 +37,6 @@ def register_consultant(request):
 		else:
 			return render(request,'consultant/registeration-form.html',context)
 	  
+
+def manage_appointment(request):
+	return render(request,'consultant/manageAppointment.html')

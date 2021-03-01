@@ -42,7 +42,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Add Consultancy Type</h4>
-                                <form class="cmxform" id="signupForm" method="get" action="#">
+                                <form class="cmxform" method="POST">
+                                    {% csrf_token %}
                                     <fieldset>
                                         <div class="form-group">
                                             <label for="consultancy-type">Consultancy Type</label>
@@ -52,7 +53,7 @@
                                             <label for="consultancy-description">Consultancy Description</label>
                                             <textarea id="consultancy-description" class="form-control" name="consultancy-description" rows="5"></textarea>
                                         </div>
-                                        <input class="btn btn-primary" type="submit" value="Submit">
+                                        <button class="btn btn-primary" type="submit">Save</button>
                                     </fieldset>
                                 </form>
                             </div>

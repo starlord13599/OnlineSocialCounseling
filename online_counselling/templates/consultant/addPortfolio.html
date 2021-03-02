@@ -19,87 +19,94 @@
 </head>
 
 <body class="sidebar-light">
-<div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
 
 
-    {% include 'consultant/header.html' %}
-
-
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_sidebar.html -->
-
-
-        {% include 'consultant/menu.html' %}
+        {% include 'consultant/header.html' %}
 
 
         <!-- partial -->
-        <div class="main-panel">
-            <div class="content-wrapper">
-                <div class="row grid-margin">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Add Portfolio</h4>
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <div class="form-group row">
-                                        <div class="col-lg-3">
-                                            <label class="col-form-label">Portfolio Name</label>
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+
+
+            {% include 'consultant/menu.html' %}
+
+
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row grid-margin">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Add Portfolio</h4>
+                                    {% if messages %}
+                                    <ul class="messages">
+                                        {% for message in messages %}
+                                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-group row">
+                                            <div class="col-lg-3">
+                                                <label class="col-form-label">Portfolio Name</label>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" maxlength="25" name="portfolio-name"
+                                                id="portfolio-name" type="text">
+                                            </div>
                                         </div>
-                                        <div class="col-lg-8">
-                                            <input class="form-control" maxlength="25" name="portfolio-name"
-                                                   id="portfolio-name" type="text">
+                                        <div class="form-group row">
+                                            <div class="col-lg-3">
+                                                <label class="col-form-label">Portfolio Description</label>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <textarea class="form-control" maxlength="20" name="portfolio-description"
+                                                id="portfolio-description" ></textarea>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-lg-3">
-                                            <label class="col-form-label">Portfolio Description</label>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <textarea class="form-control" maxlength="20" name="portfolio-description"
-                                                      id="portfolio-description" ></textarea>
-                                        </div>
-                                    </div>
-                                    <input class="btn btn-primary" type="submit" value="Submit">
-                                </form>
+                                        <input class="btn btn-primary" type="submit" value="Submit">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:../../partials/_footer.html -->
 
+                {% include 'consultant/footer.html' %}
+
+                <!-- partial -->
             </div>
-            <!-- content-wrapper ends -->
-            <!-- partial:../../partials/_footer.html -->
-
-            {% include 'consultant/footer.html' %}
-
-            <!-- partial -->
+            <!-- main-panel ends -->
         </div>
-        <!-- main-panel ends -->
+        <!-- page-body-wrapper ends -->
     </div>
-    <!-- page-body-wrapper ends -->
-</div>
-<!-- container-scroller -->
-<!-- base:js -->
-<script src="../../static/adminResourses/js/vendor.bundle.base.js"></script>
-<!-- endinject -->
-<!-- inject:js -->
-<script src="../../static/adminResourses/js/off-canvas.js"></script>
-<script src="../../static/adminResourses/js/hoverable-collapse.js"></script>
-<script src="../../static/adminResourses/js/template.js"></script>
-<script src="../../static/adminResourses/js/settings.js"></script>
-<script src="../../static/adminResourses/js/todolist.js"></script>
-<!-- endinject -->
-<!-- plugin js for this page -->
-<script src="../../static/adminResourses/js/jquery.validate.min.js"></script>
-<script src="../../static/adminResourses/js/bootstrap-maxlength.min.js"></script>
-<!-- End plugin js for this page -->
-<!-- Custom js for this page-->
-<script src="../../static/adminResourses/js/form-validation.js"></script>
-<script src="../../static/adminResourses/js/bt-maxLength.js"></script>
-<!-- End custom js for this page-->
+    <!-- container-scroller -->
+    <!-- base:js -->
+    <script src="../../static/adminResourses/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="../../static/adminResourses/js/off-canvas.js"></script>
+    <script src="../../static/adminResourses/js/hoverable-collapse.js"></script>
+    <script src="../../static/adminResourses/js/template.js"></script>
+    <script src="../../static/adminResourses/js/settings.js"></script>
+    <script src="../../static/adminResourses/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- plugin js for this page -->
+    <script src="../../static/adminResourses/js/jquery.validate.min.js"></script>
+    <script src="../../static/adminResourses/js/bootstrap-maxlength.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    <script src="../../static/adminResourses/js/form-validation.js"></script>
+    <script src="../../static/adminResourses/js/bt-maxLength.js"></script>
+    <!-- End custom js for this page-->
 </body>
 
 </html>

@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .forms import UserForm, ConsultantForm
 from django.contrib import messages
-from .models import ConsultancyType
+from .models import ConsultancyType, Portfolio, Consultant
+from django.contrib.auth.models import User
 from administration.models import UserRole
 
 
@@ -50,8 +51,23 @@ def manage_appointment(request):
 def add_portfolio(request):
 	if request.method == 'GET':
 		return render(request,'consultant/addPortfolio.html')
+	else:
+		portfolio = Portfolio()
+		portfolio.portfolio_name = request.POST['portfolio-name']
+		portfolio.portfolio_description = request.POST['portfolio-description']
+		portfolio.consultant = Consultant.objects.get(user=User.objects.get(username=request.user.username))
+		try:
+			portfolio.save()
+		except:
+			messages.error(request,'Portfolio Name should be unique!!')
+			return redirect('add_portfolio')
+		
+			return redirect('view_portfolio')
 
 
 def view_portfolio(request):
 	if request.method == 'GET':
-		return render(request,'consultant/viewPortfolio.html')
+		context = {}
+		portfolio = Portfolio.objects.all()
+		context['portfolio'] = portfolio
+		return render(request, 'consultant/viewPortfolio.html', context)

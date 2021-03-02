@@ -53,13 +53,13 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for country in countries %}
+                                        {% for portfolio in portfolio %}
                                             <tr>
-                                                <td>{{ country.country_name }}</td>
-                                                <td>{{ country.country_description }}</td>
+                                                <td>{{ portfolio.portfolio_name }}</td>
+                                                <td>{{ portfolio.portfolio_description }}</td>
                                                 <td>
-                                                    <a href="{% url 'edit_country' country.id %}"><i class="mdi mdi-pencil-box" style="font-size: 20px;color: blue;margin-left: 10px;"></i> </a>
-                                                    <a href="{% url 'delete_country' country.id %}"><i class="mdi mdi-delete" style="font-size: 20px;color: red;margin-left: 10px;"></i> </a>
+                                                    <a href="{% url 'edit_country' portfolio.id %}"><i class="mdi mdi-pencil-box" style="font-size: 20px;color: blue;margin-left: 10px;"></i> </a>
+                                                    <a href="{% url 'delete_country' portfolio.id %}"><i class="mdi mdi-delete" style="font-size: 20px;color: red;margin-left: 10px;"></i> </a>
                                                 </td>
                                             </tr>
                                         {% endfor %}

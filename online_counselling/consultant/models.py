@@ -41,7 +41,7 @@ class ConsultancyType(models.Model):
 
 class Portfolio(models.Model):
 	consultant = models.ForeignKey(Consultant,on_delete=models.CASCADE)
-	portfolio_name = models.CharField(max_length=150, default='')
+	portfolio_name = models.CharField(max_length=150, unique=True)
 	portfolio_description = models.CharField(max_length=150)
 	
 	class Meta:

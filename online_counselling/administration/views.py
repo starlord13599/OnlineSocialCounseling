@@ -15,8 +15,8 @@ def index(request):
 	return render(request,'index.html')
 
 
-def admin_index(request):
-	return render(request,'admin/index.html')
+def administration_index(request):
+	return render(request,'administration/index.html')
 
 
 def register(request):
@@ -26,7 +26,7 @@ def register(request):
 
 def login_user(request):
 	if request.method == 'GET':
-		return render(request,'admin/login.html')
+		return render(request,'administration/login.html')
 	else:
 		username = request.POST.get('username')
 		password = request.POST.get('password')
@@ -39,7 +39,7 @@ def login_user(request):
 				if user_role.role == 'Consultant':
 					return redirect('consultant_index')
 				elif user_role.role == 'Consultee':
-					return redirect('admin_index')
+					return redirect('administration_index')
 					
 			else:
 				return HttpResponse('User Is Not Active.')
@@ -63,24 +63,24 @@ def logout_user(request):
 
 def approve_consultant(request):
 	if request.method == 'GET':
-		return render(request,'admin/approveConsultant.html')
+		return render(request,'administration/approveConsultant.html')
 
 
 def view_consultee(request):
 	if request.method == 'GET':
-		return render(request,'admin/viewConsultee.html')
+		return render(request,'administration/viewConsultee.html')
 
 
 def view_consultancy_type(request):
 	if request.method == 'GET':
 		context = {}
 		context['consultancy_type'] = ConsultancyType.objects.all()
-		return render(request, 'admin/viewConsultancyType.html', context)
+		return render(request, 'administration/viewConsultancyType.html', context)
 
 
 def add_consultancy_type(request):
 	if request.method == 'GET':
-		return render(request,'admin/addConsultancyType.html')
+		return render(request,'administration/addConsultancyType.html')
 	else:
 		consultancy_type = ConsultancyType()
 		consultancy_type.category_type = request.POST['consultancy-type']
@@ -91,7 +91,7 @@ def add_consultancy_type(request):
 
 def add_country(request):
 	if request.method == 'GET':
-		return render(request,'admin/addCountry.html')
+		return render(request,'administration/addCountry.html')
 	else:
 		# print(request.POST)
 		country = Country()
@@ -107,7 +107,7 @@ def view_country(request):
 		countries = Country.objects.all()
 		context = {}
 		context['countries'] = countries
-		return render(request,'admin/viewCountry.html', context)
+		return render(request,'administration/viewCountry.html', context)
 
 
 def add_state(request):
@@ -115,7 +115,7 @@ def add_state(request):
 		countries = Country.objects.all()
 		context = {}
 		context['countries'] = countries
-		return render(request, 'admin/addState.html', context)
+		return render(request, 'administration/addState.html', context)
 	else:
 		country = Country.objects.get(id=request.POST['country'])
 		state = State()
@@ -131,7 +131,7 @@ def view_state(request):
 		states = State.objects.all()
 		context = {}
 		context['states'] = states
-		return render(request, 'admin/viewState.html', context)
+		return render(request, 'administration/viewState.html', context)
 
 
 def add_city(request):
@@ -139,7 +139,7 @@ def add_city(request):
 		countries = Country.objects.all()
 		context = {}
 		context['countries'] = countries
-		return render(request, 'admin/addCity.html', context)
+		return render(request, 'administration/addCity.html', context)
 	else:
 		print(request.POST)
 		country = Country.objects.get(id=request.POST['country'])
@@ -159,22 +159,22 @@ def view_city(request):
 		cities = City.objects.all()
 		context = {}
 		context['cities'] = cities
-		return render(request,'admin/viewCity.html', context)
+		return render(request,'administration/viewCity.html', context)
 
 
 def view_appointments(request):
 	if request.method == 'GET':
-		return render(request,'admin/viewAppointments.html')
+		return render(request,'administration/viewAppointments.html')
 
 
 def view_complaints(request):
 	if request.method == 'GET':
-		return render(request,'admin/viewComplaints.html')
+		return render(request,'administration/viewComplaints.html')
 
 
 def view_feedbacks(request):
 	if request.method == 'GET':
-		return render(request,'admin/viewFeedbacks.html')
+		return render(request,'administration/viewFeedbacks.html')
 
 
 def delete_country(request,pk):
@@ -188,7 +188,7 @@ def edit_country(request,pk):
 	if request.method == 'GET':
 		context = {}
 		context['country'] = country
-		return render(request, 'admin/editCountry.html', context)
+		return render(request, 'administration/editCountry.html', context)
 	else:
 		country.country_name = request.POST['country-name']
 		country.country_description = request.POST['country-description']
@@ -208,7 +208,7 @@ def edit_state(request,pk):
 		context = {}
 		context['countries'] = countries
 		context['state'] = state
-		return render(request, 'admin/editState.html', context)
+		return render(request, 'administration/editState.html', context)
 	else:
 		state.country = Country.objects.get(id=request.POST['country'])
 		state.state_name = request.POST['state-name']
@@ -240,7 +240,7 @@ def edit_city(request,pk):
 		context['countries'] = countries
 		context['states'] = states
 		context['city'] = city
-		return render(request, 'admin/editCity.html', context)
+		return render(request, 'administration/editCity.html', context)
 	else:
 		city.country = Country.objects.get(id=request.POST['country'])
 		city.state = State.objects.get(id=request.POST['state'])
@@ -255,7 +255,7 @@ def edit_consultancy_type(request, pk):
 	if request.method == 'GET':
 		context = {}
 		context['consultancy_type'] = consultancy_type
-		return render(request, 'admin/editConsultancyType.html', context)
+		return render(request, 'administration/editConsultancyType.html', context)
 	else:
 		consultancy_type.category_type = request.POST['consultancy-type']
 		consultancy_type.category_description = request.POST['consultancy-description']

@@ -20,6 +20,6 @@ country_select.addEventListener('change',function(){
 	 }
     }
   };
-  xhttp.open("GET", "/admin/get-states/" + String(this.value), true);
+  xhttp.open("GET", "/administration/get-states/" + String(this.value), true);
   xhttp.send();
 })

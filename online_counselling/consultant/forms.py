@@ -1,5 +1,5 @@
 from django import forms
-from .models import Consultant, ConsutancyType
+from .models import Consultant, ConsultancyType
 from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
@@ -21,7 +21,7 @@ class ConsultantForm(forms.ModelForm):
         }
 	def __init__(self, *args, **kwargs):
 		super(ConsultantForm, self).__init__(*args, **kwargs)
-		obj = ConsutancyType.objects.all()
+		obj = ConsultancyType.objects.all()
 		consultancy_types = []
 		for i in obj:
 			consultancy_types.append((i.category_type,i.category_type))

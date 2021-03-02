@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns =[
 	path('',views.index, name='index'),
+	path('administration',views.admin_index, name='admin_index'),
 	path('register/',views.register, name='register'),
 	path('login/',views.login_user, name='login'),
 	path('profile/<int:id>', views.view_profile, name='profile'),
@@ -23,10 +24,11 @@ urlpatterns =[
 	path('admin/view-appointments',views.view_appointments, name='view_appointments'),
 	path('admin/view-complaints',views.view_complaints, name='view_complaints'),
 	path('admin/view-feedbacks',views.view_feedbacks, name='view_feedbacks'),
-	path('admin/logout',views.logout_user, name='logout_user'),
 	path('admin/delete-country/<int:pk>',views.delete_country, name='delete_country'),
 	path('admin/delete-state/<int:pk>',views.delete_state, name='delete_state'),
 	path('admin/get-states/<int:pk>',views.get_states, name='get_states'),
 	path('admin/delete-city/<int:pk>',views.delete_city, name='delete_city'),
 	path('admin/edit-city/<int:pk>',views.edit_city, name='edit_city'),
+	path('admin/edit-consultancy-type/<int:pk>',views.edit_consultancy_type, name='edit_consultancy_type'),
+	path('admin/delete-consultancy-type/<int:pk>',views.delete_consultancy_type, name='delete_consultancy_type'),
 ]

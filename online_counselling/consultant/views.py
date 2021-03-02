@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .forms import UserForm, ConsultantForm
 from django.contrib import messages
-from .models import ConsutancyType
+from .models import ConsultancyType
+from administration.models import UserRole
 
 
 # Create your views here.
@@ -19,6 +20,7 @@ def register_consultant(request):
 	else:
 		user_form = UserForm(request.POST)
 		consultant_form = ConsultantForm(request.POST)
+		user_role = UserRole()
 		context = {}
 		context['user_form'] = user_form
 		context['consultant_form'] = consultant_form
@@ -26,14 +28,16 @@ def register_consultant(request):
 			user = user_form.save()
 			user.set_password(user.password)
 			user.save()
-
+			user_role.user = user
+			user_role.role = 'Consultant'
+			user_role.save()
 			consultant = consultant_form.save(commit=False)
 			consultant.user = user
 			consultant.ratings = 0
 			consultant.number_of_reviews = 0
 			consultant.number_of_customers = 0
 			consultant.save()
-			return redirect('index')
+			return redirect('login')
 		else:
 			return render(request,'consultant/registeration-form.html',context)
 	  

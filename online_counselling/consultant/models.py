@@ -31,7 +31,7 @@ class Consultant(models.Model):
 		db_table = 'consultant_details'
 
 
-class ConsutancyType(models.Model):
+class ConsultancyType(models.Model):
 	category_type = models.CharField(max_length=150)
 	category_description = models.CharField(max_length=250)
 

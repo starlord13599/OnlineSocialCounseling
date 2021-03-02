@@ -4,11 +4,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Country, State, City
+from consultant.models import ConsultancyType
+from administration.models import UserRole
 import json
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 def index(request):
+	return render(request,'index.html')
+
+
+def admin_index(request):
 	return render(request,'admin/index.html')
 
 
@@ -19,7 +26,7 @@ def register(request):
 
 def login_user(request):
 	if request.method == 'GET':
-		return render(request,'login.html')
+		return render(request,'admin/login.html')
 	else:
 		username = request.POST.get('username')
 		password = request.POST.get('password')
@@ -27,7 +34,13 @@ def login_user(request):
 		if user:
 			if user.is_active:
 				login(request,user)
-				return redirect('/')
+				print(user)
+				user_role = UserRole.objects.get(user=user)
+				if user_role.role == 'Consultant':
+					return redirect('consultant_index')
+				elif user_role.role == 'Consultee':
+					return redirect('admin_index')
+					
 			else:
 				return HttpResponse('User Is Not Active.')
 		else:
@@ -45,7 +58,7 @@ def view_profile(request,id):
 @login_required
 def logout_user(request):
 	logout(request)
-	return redirect('/')
+	return redirect('login_user')
 
 
 def approve_consultant(request):
@@ -60,12 +73,20 @@ def view_consultee(request):
 
 def view_consultancy_type(request):
 	if request.method == 'GET':
-		return render(request,'admin/viewConsultancyType.html')
+		context = {}
+		context['consultancy_type'] = ConsultancyType.objects.all()
+		return render(request, 'admin/viewConsultancyType.html', context)
 
 
 def add_consultancy_type(request):
 	if request.method == 'GET':
 		return render(request,'admin/addConsultancyType.html')
+	else:
+		consultancy_type = ConsultancyType()
+		consultancy_type.category_type = request.POST['consultancy-type']
+		consultancy_type.category_description = request.POST['consultancy-description']
+		consultancy_type.save()
+		return redirect('view_consultancy_type')
 
 
 def add_country(request):
@@ -156,11 +177,6 @@ def view_feedbacks(request):
 		return render(request,'admin/viewFeedbacks.html')
 
 
-def logout_user(request):
-	if request.method == 'GET':
-		return render(request,'admin/login.html')
-
-
 def delete_country(request,pk):
 	print('In Delete Country',pk)
 	Country.objects.get(id=pk).delete()
@@ -232,3 +248,21 @@ def edit_city(request,pk):
 		city.city_description = request.POST['city-description']
 		city.save()
 		return redirect('view_city')
+
+
+def edit_consultancy_type(request, pk):
+	consultancy_type = ConsultancyType.objects.get(id=pk)
+	if request.method == 'GET':
+		context = {}
+		context['consultancy_type'] = consultancy_type
+		return render(request, 'admin/editConsultancyType.html', context)
+	else:
+		consultancy_type.category_type = request.POST['consultancy-type']
+		consultancy_type.category_description = request.POST['consultancy-description']
+		consultancy_type.save()
+		return redirect('view_consultancy_type')
+
+
+def delete_consultancy_type(request, pk):
+	consultancy_type = ConsultancyType.objects.get(id=pk).delete()
+	return redirect('view_consultancy_type')

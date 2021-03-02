@@ -1,8 +1,15 @@
 from django.db import models
 from consultant.models import Consultant
 from consultee.models import Consultee
+from django.contrib.auth.models import User
 
 # Create your models here.
+
+class UserRole(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	role = models.CharField(max_length=150)
+	class Meta:
+		db_table = 'user_roles'
 
 
 class Slot(models.Model):

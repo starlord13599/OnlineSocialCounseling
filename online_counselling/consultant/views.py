@@ -40,3 +40,14 @@ def register_consultant(request):
 
 def manage_appointment(request):
 	return render(request,'consultant/manageAppointment.html')
+
+
+
+def add_portfolio(request):
+	if request.method == 'GET':
+		return render(request,'consultant/addPortfolio.html')
+
+
+def view_portfolio(request):
+	if request.method == 'GET':
+		return render(request,'consultant/viewPortfolio.html')

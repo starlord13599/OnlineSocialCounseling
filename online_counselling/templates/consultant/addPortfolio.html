@@ -23,7 +23,7 @@
     <!-- partial:partials/_navbar.html -->
 
 
-    {% include 'admin/header.html' %}
+    {% include 'consultant/header.html' %}
 
 
     <!-- partial -->
@@ -31,7 +31,7 @@
         <!-- partial:partials/_sidebar.html -->
 
 
-        {% include 'admin/menu.html' %}
+        {% include 'consultant/menu.html' %}
 
 
         <!-- partial -->
@@ -41,25 +41,25 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Add Country</h4>
+                                <h4 class="card-title">Add Portfolio</h4>
                                 <form method="POST">
                                     {% csrf_token %}
                                     <div class="form-group row">
                                         <div class="col-lg-3">
-                                            <label class="col-form-label">Country Name</label>
+                                            <label class="col-form-label">Portfolio Name</label>
                                         </div>
                                         <div class="col-lg-8">
-                                            <input class="form-control" maxlength="25" name="country-name"
-                                                   id="country-name" type="text">
+                                            <input class="form-control" maxlength="25" name="portfolio-name"
+                                                   id="portfolio-name" type="text">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-lg-3">
-                                            <label class="col-form-label">Country Description</label>
+                                            <label class="col-form-label">Portfolio Description</label>
                                         </div>
                                         <div class="col-lg-8">
-                                            <textarea class="form-control" maxlength="20" name="country-description"
-                                                      id="country-description" ></textarea>
+                                            <textarea class="form-control" maxlength="20" name="portfolio-description"
+                                                      id="portfolio-description" ></textarea>
                                         </div>
                                     </div>
                                     <input class="btn btn-primary" type="submit" value="Submit">
@@ -73,7 +73,7 @@
             <!-- content-wrapper ends -->
             <!-- partial:../../partials/_footer.html -->
 
-            {% include 'admin/footer.html' %}
+            {% include 'consultant/footer.html' %}
 
             <!-- partial -->
         </div>

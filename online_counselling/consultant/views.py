@@ -62,7 +62,7 @@ def add_portfolio(request):
 			messages.error(request,'Portfolio Name should be unique!!')
 			return redirect('add_portfolio')
 		
-			return redirect('view_portfolio')
+		return redirect('view_portfolio')
 
 
 def view_portfolio(request):

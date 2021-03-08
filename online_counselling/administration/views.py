@@ -47,7 +47,7 @@ def login_user(request):
 			messages.error(request,'Invalid Login Credentials')
 
 		# print(request.POST)
-		return redirect('login')
+		return redirect('login_user')
 
 
 @login_required

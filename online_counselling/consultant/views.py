@@ -38,7 +38,7 @@ def register_consultant(request):
 			consultant.number_of_reviews = 0
 			consultant.number_of_customers = 0
 			consultant.save()
-			return redirect('login')
+			return redirect('login_user')
 		else:
 			return render(request,'consultant/registeration-form.html',context)
 	  

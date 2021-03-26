@@ -7,6 +7,7 @@ from administration.models import UserRole
 from .forms import UserForm, ConsultantForm
 from .models import Portfolio, Consultant
 
+import pandas as pd
 
 # Create your views here.
 @login_required
@@ -84,3 +85,10 @@ def view_portfolio(request):
             portfolio = Portfolio.objects.all()
             context['portfolio'] = portfolio
             return render(request, 'consultant/viewPortfolio.html', context)
+
+
+def xyz(request):
+    data = pd.DataFrame(list(Consultant.objects.all().values()))
+    print(data)
+    data.to_csv('database_data.csv')
+    return 'abc'

@@ -4,12 +4,14 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('search-consultancy-type/<str:c_type>', views.search_consultancy_type, name='search_consultancy_type'),
     path('administration', views.administration_index, name='administration_index'),
     path('register/', views.register, name='register'),
     path('login/', views.login_user, name='login_user'),
     path('profile/<int:id>', views.view_profile, name='profile'),
     path('logout/', views.logout_user, name='logout_user'),
     path('administration/approve-consultant', views.approve_consultant, name='approve_consultant'),
+    path('administration/approve-consultant-action/<int:pk>', views.approve_consultant_action, name='approve_consultant_action'),
     path('administration/view-consultee', views.view_consultee, name='view_consultee'),
     path('administration/view-consultancy-type', views.view_consultancy_type, name='view_consultancy_type'),
     path('administration/add-consultancy-type', views.add_consultancy_type, name='add_consultancy_type'),
@@ -32,4 +34,6 @@ urlpatterns = [
     path('administration/edit-consultancy-type/<int:pk>', views.edit_consultancy_type, name='edit_consultancy_type'),
     path('administration/delete-consultancy-type/<int:pk>', views.delete_consultancy_type,
          name='delete_consultancy_type'),
+    path('administration/delete-consultee/<int:pk>', views.delete_consultee, name='delete_consultee'),
+    path('abc', views.abc, name='abc'),
 ]

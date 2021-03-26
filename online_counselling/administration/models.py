@@ -24,6 +24,8 @@ class Slot(models.Model):
 
 
 class Appointment(models.Model):
+    consultant = models.ForeignKey(Consultant,on_delete=models.CASCADE, default=0)
+    consultee = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     date_time_stamp = models.DateTimeField()
     remark = models.CharField(max_length=250)
 

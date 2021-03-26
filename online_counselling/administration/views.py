@@ -4,9 +4,11 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponse, redirect
+import pandas as pd
 
 from administration.models import UserRole
-from consultant.models import ConsultancyType
+from consultant.models import ConsultancyType, Consultant
+from consultee.models import Consultee
 from .models import Country, State, City
 
 
@@ -45,13 +47,10 @@ def login_user(request):
                         return redirect('consultant_index')
                     elif user_role.role == 'Consultee':
                         return redirect('index')
-
             else:
                 return HttpResponse('User Is Not Active.')
         else:
             messages.error(request, 'Invalid Login Credentials')
-
-        # print(request.POST)
         return redirect('login_user')
 
 
@@ -71,14 +70,26 @@ def logout_user(request):
 def approve_consultant(request):
     if request.user.is_superuser:
         if request.method == 'GET':
-            return render(request, 'administration/approveConsultant.html')
+            unapproved_consultants = Consultant.objects.all()
+            print(unapproved_consultants)
+            return render(request, 'administration/approveConsultant.html', {'unapproved_consultants':unapproved_consultants})
+
+
+@login_required
+def approve_consultant_action(request, pk):
+    if request.user.is_superuser:
+        consultant = Consultant.objects.get(id=pk)
+        consultant.approved = True
+        consultant.save()
+        return redirect('approve_consultant')
 
 
 @login_required
 def view_consultee(request):
     if request.user.is_superuser:
         if request.method == 'GET':
-            return render(request, 'administration/viewConsultee.html')
+            consultee = Consultee.objects.all()
+            return render(request, 'administration/viewConsultee.html', {'consultee' : consultee})
 
 
 @login_required
@@ -165,7 +176,6 @@ def add_city(request):
             context['countries'] = countries
             return render(request, 'administration/addCity.html', context)
         else:
-            print(request.POST)
             country = Country.objects.get(id=request.POST['country'])
             state = State.objects.get(id=request.POST['state'])
             city = City()
@@ -311,3 +321,24 @@ def delete_consultancy_type(request, pk):
     if request.user.is_superuser:
         consultancy_type = ConsultancyType.objects.get(id=pk).delete()
         return redirect('view_consultancy_type')
+
+
+@login_required
+def delete_consultee(request, pk):
+    if request.user.is_superuser:
+        Consultee.objects.get(id=pk).delete()
+        return redirect('view_consultee')
+
+
+@login_required
+def search_consultancy_type(request, c_type):
+    consultants = Consultant.objects.filter(type_of_consultant=c_type.title())
+    print(consultants)
+    return render(request, 'administration/searchPage.html', {'consultants':consultants})
+
+
+def abc(request):
+    products = list(Consultant.objects.all().values())
+    df = pd.DataFrame(products)
+    print(df)
+    return HttpResponse('Hello World')

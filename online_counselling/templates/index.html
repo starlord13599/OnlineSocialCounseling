@@ -12,13 +12,13 @@
 		</div>
 		<div class="col-6 category-description">
 			<h1>Looking for Doctor?</h1>
-			<button class="btn btn-lg btn-outline-success">Click Here</button>
+			<a href="{% url 'search_consultancy_type' 'doctor' %}" class="btn btn-lg btn-outline-success">Click Here</a>
 		</div>
 	</div>
 	<div class="row content">
 		<div class="col-6 category-description">
 			<h1>Career Planning?</h1>
-			<button class="btn btn-lg btn-outline-success">Click Here</button>
+			<a href="{% url 'search_consultancy_type' 'Career' %}" class="btn btn-lg btn-outline-success">Click Here</a>
 		</div>
 		<div class="col-6">
 			<img src="{% static '/images/career.jpg' %}" class="category-images">
@@ -30,13 +30,13 @@
 		</div>
 		<div class="col-6 category-description">
 			<h1>Finding a Lawyer?</h1>
-			<button class="btn btn-lg btn-outline-success">Click Here</button>
+			<a href="{% url 'search_consultancy_type' 'lawyer' %}" class="btn btn-lg btn-outline-success">Click Here</a>
 		</div>
 	</div>
 	<div class="row content">
 		<div class="col-6 category-description">
 			<h1>Some Educational?</h1>
-			<button class="btn btn-lg btn-outline-success">Click Here</button>
+			<a href="{% url 'search_consultancy_type' 'education' %}" class="btn btn-lg btn-outline-success">Click Here</a>
 		</div>
 		<div class="col-6">
 			<img src="{% static '/images/educational.jpg' %}" class="category-images">

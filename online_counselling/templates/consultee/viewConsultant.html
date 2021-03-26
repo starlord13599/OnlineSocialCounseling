@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container prdct bor-r-5" style="margin-top: 100px;">
+    <div class="row">
+        <div class="col-sm-12 col-lg-6 prdct-img row">
+            <div class="col-xs-12 col-sm-9 order-1 order-sm-2">
+                <img src="{% static 'images/doc3.jpg' %}" style="width: inherit;" id="lg-prdct-img"
+                    class="bor-r-5">
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-6 prdct-details">
+            <ul class="ul_list" style="list-style: none;">
+                <li class="list-elements">
+                    <h1>{{ consultant.first_name }} {{ consultant.last_name|title }}</h1>
+                </li>
+                <li class="list-elements">
+                    <h2>Type Of Consultant: {{ consultant.type_of_consultant }}</h2>
+                </li>
+                <li class="list-elements">
+                    <h2>Country: {{ consultant.country }}</h2>
+                </li>
+                <li class="list-elements">
+                    <h2>Number Of Customers: {{ consultant.number_of_customers }}</h2>
+                </li>
+                <li class="list-elements">
+                    <h4 style="display: inline-block;">Ratings: {{ consultant.ratings }}</h4><span
+                        style="margin-left: 15px">({{ consultant.number_of_reviews }})</span>
+                </li>
+                <li class="list-elements">
+                    <h2>Lat :{{ consultant.lat }}</h2>
+                </li>
+                <li class="list-elements">
+                    <h2>Long: {{ consultant.long }}</h2>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <h1 style="margin: 30px 0;border-bottom: 5px solid #ffe3d8;display: inline-block;">Book an Appointment</h1>
+    <form>
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-6">
+                <label for="date-time-picker" class="form-label">Select The Date and Time</label>
+            </div>
+            <div class="col-3">
+                <input type="date" name="date-time" id="date-time-picker" class="form-control">
+            </div>
+            <div class="col-3">
+                <input type="time" name="date-time" id="date-time-picker" class="form-control">
+            </div>
+        </div>
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-6">
+                <label for="remark" class="form-label">Remark</label>
+            </div>
+            <div class="col-6">
+                <textarea name="remark" id="remark" class="form-control"></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-lg btn-outline-success">Book Appointment</button>
+    </form>
+    <h1 style="margin: 30px 0;border-bottom: 5px solid #ffe3d8;display: inline-block;">You Might Also Like</h1>
+    <div class="block_container container">
+        {% for consultant in consultant_rec %}
+        <a href="{% url 'view_consultant' consultant.id %}" style="text-decoration: none; color: inherit;">
+            <div class="block_container__indi">
+                <div class="block_container__indi--img">
+                    <img class="image" src="{% static 'images/doc3.jpg' %}" alt="doc1" srcset="">
+                </div>
+                <p class="block_container__indi--name"><span class="bold">Name:-</span>{{ consultant.first_name }} {{ consultant.last_name|title }}</p>
+                <p class="block_container__indi--place"><span class="bold">Country:-</span>{{ consultant.country }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block head %}
+<style>
+    .bg-light {
+        background-color: #ffe3d8 !important;
+    }
+</style>
+{% endblock %}

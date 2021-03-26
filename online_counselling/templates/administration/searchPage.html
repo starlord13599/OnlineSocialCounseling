@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if consultants %}
+<div class="block_container container">
+    {% for consultant in  consultants %}
+    <a href="{% url 'view_consultant' consultant.id %}" style="text-decoration: none; color: inherit;">
+      <div class="block_container__indi">
+        <div class="block_container__indi--img">
+          <img class="image" src="{% static 'images/doc3.jpg' %}" alt="doc1" srcset="">
+        </div>
+        <p class="block_container__indi--name"><span class="bold">Name:-</span>{{ consultant.first_name }} {{ consultant.last_name }}</p>
+        <p class="block_container__indi--place"><span class="bold">Place:-</span>{{ consultant.country }}</p>
+      </div>
+    </a>
+    {% endfor %}
+</div>
+{% else %}
+<div class="text-center" style="margin-top:45px;">
+  <h3>No Consultants Exist</h3>
+</div>
+
+{% endif %}
+{% endblock %}
+
+{% block head %}
+<style>
+.bg-light{
+  background-color: #ffe3d8 !important;
+}
+</style>
+{% endblock %}

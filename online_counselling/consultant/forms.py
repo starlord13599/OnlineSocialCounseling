@@ -19,7 +19,7 @@ class DateInput(forms.DateInput):
 class ConsultantForm(forms.ModelForm):
     class Meta:
         model = Consultant
-        exclude = ['user', 'ratings', 'number_of_reviews', 'number_of_customers']
+        exclude = ['user', 'ratings', 'number_of_reviews', 'number_of_customers', 'approved']
         widgets = {
             'date_of_birth': DateInput()
         }

@@ -51,28 +51,36 @@
                                             <th>Consultant Name</th>
                                             <th>Consultant Type</th>
                                             <th>Country</th>
-                                            <th>State</th>
-                                            <th>City</th>
+                                            <th>Years Of Exp.</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
+                                          {% for consultant in unapproved_consultants %}
                                         <tr>
-                                            <td>1</td>
-                                            <td>2012/08/03</td>
-                                            <td>Edinburgh</td>
-                                            <td>New York</td>
-                                            <td>$1500</td>
-                                            <td>$3200</td>
+                                            <td>{{ consultant.user.username }}</td>
+                                            <td>{{ consultant.user.first_name }} {{ consultant.user.last_name }}</td>
+                                            <td>{{ consultant.type_of_consultant }}</td>
+                                            <td>{{ consultant.country }}</td>
+                                            <td>{{ consultant.years_of_experience }}</td>
+                                            {% if consultant.approved %}
                                             <td>
-                                                <label class="badge badge-info">On hold</label>
+                                                <label class="badge badge-info">Approved</label>
                                             </td>
                                             <td>
-                                                <button class="btn btn-outline-primary">View</button>
+                                                <button class="btn btn-outline-primary" disabled>Approved</button>
                                             </td>
+                                            {% else %}
+                                            <td>
+                                                <label class="badge badge-danger">Pending</label>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'approve_consultant_action' consultant.id %}" class="btn btn-outline-primary">Approve</button>
+                                            </td>
+                                            {% endif %}
                                         </tr>
-
+                                          {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>

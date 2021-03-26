@@ -8,4 +8,5 @@ urlpatterns = [
     path('manage-appointment', views.manage_appointment, name='manage_appointment'),
     path('add-portfolio', views.add_portfolio, name='add_portfolio'),
     path('view-portfolio', views.view_portfolio, name='view_portfolio'),
+    path('xyz', views.xyz, name='xyz'),
 ]

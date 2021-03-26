@@ -51,28 +51,25 @@
                                             <th>Consultee Name</th>
                                             <th>Contact</th>
                                             <th>Country</th>
-                                            <th>State</th>
-                                            <th>City</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
+                                          {% for consultee in consultee %}
                                         <tr>
-                                            <td>1</td>
-                                            <td>2012/08/03</td>
-                                            <td>Edinburgh</td>
-                                            <td>New York</td>
-                                            <td>$1500</td>
-                                            <td>$3200</td>
+                                            <td>{{ consultee.user.username }}</td>
+                                            <td>{{ consultee.user.first_name }} {{ consultee.user.last_name  }}</td>
+                                            <td>{{ consultee.phone_no }}</td>
+                                            <td>{{ consultee.country }}</td>
                                             <td>
-                                                <label class="badge badge-info">On hold</label>
+                                                <label class="badge badge-info">{{ consultee.user.is_active }}</label>
                                             </td>
                                             <td>
-                                                <button class="btn btn-outline-primary">View</button>
+                                                <a href="{% url 'delete_consultee' consultee.id %}" class="btn btn-outline-danger">Delete</a>
                                             </td>
                                         </tr>
-
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
